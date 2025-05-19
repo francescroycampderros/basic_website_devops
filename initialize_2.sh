@@ -3,5 +3,6 @@ docker build -t my-apache2 .
 docker run -dit --name my-running-app -p 8080:80 my-apache2
 docker exec -it my-running-app rm /var/www/html/index.html
 docker exec -it my-running-app git clone  https://github.com/francescroycampderros/composer_example_user.git /var/www/html
+docker exec -it -w /var/www/html my-running-app composer install #faltava no, aquesta línea?
 docker exec -it my-running-app chmod 777 /var/www/html/app.log
 docker exec -it my-running-app systemctl start apache2
